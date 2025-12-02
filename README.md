@@ -14,17 +14,18 @@
 [![GitHub Stars](https://img.shields.io/github/stars/sansan0/TrendRadar?style=flat-square&logo=github&color=yellow)](https://github.com/sansan0/TrendRadar/stargazers)
 [![GitHub Forks](https://img.shields.io/github/forks/sansan0/TrendRadar?style=flat-square&logo=github&color=blue)](https://github.com/sansan0/TrendRadar/network/members)
 [![License](https://img.shields.io/badge/license-GPL--3.0-blue.svg?style=flat-square)](LICENSE)
-[![Version](https://img.shields.io/badge/version-v3.3.0-blue.svg)](https://github.com/sansan0/TrendRadar)
-[![MCP](https://img.shields.io/badge/MCP-v1.0.2-green.svg)](https://github.com/sansan0/TrendRadar)
+[![Version](https://img.shields.io/badge/version-v3.4.1-blue.svg)](https://github.com/sansan0/TrendRadar)
+[![MCP](https://img.shields.io/badge/MCP-v1.0.3-green.svg)](https://github.com/sansan0/TrendRadar)
 
 [![企业微信通知](https://img.shields.io/badge/企业微信-通知-00D4AA?style=flat-square)](https://work.weixin.qq.com/)
 [![个人微信通知](https://img.shields.io/badge/个人微信-通知-00D4AA?style=flat-square)](https://weixin.qq.com/)
 [![Telegram通知](https://img.shields.io/badge/Telegram-通知-00D4AA?style=flat-square)](https://telegram.org/)
 [![dingtalk通知](https://img.shields.io/badge/钉钉-通知-00D4AA?style=flat-square)](#)
 [![飞书通知](https://img.shields.io/badge/飞书-通知-00D4AA?style=flat-square)](https://www.feishu.cn/)
-[![邮件通知](https://img.shields.io/badge/Email-通知-00D4AA?style=flat-square)](#) 
+[![邮件通知](https://img.shields.io/badge/Email-通知-00D4AA?style=flat-square)](#)
 [![ntfy通知](https://img.shields.io/badge/ntfy-通知-00D4AA?style=flat-square)](https://github.com/binwiederhier/ntfy)
 [![Bark通知](https://img.shields.io/badge/Bark-通知-00D4AA?style=flat-square)](https://github.com/Finb/Bark)
+[![Slack通知](https://img.shields.io/badge/Slack-通知-00D4AA?style=flat-square)](https://slack.com/)
 
 
 [![GitHub Actions](https://img.shields.io/badge/GitHub_Actions-自动化-2088FF?style=flat-square&logo=github-actions&logoColor=white)](https://github.com/sansan0/TrendRadar)
@@ -276,7 +277,7 @@
 
 ### **多渠道实时推送**
 
-支持**企业微信**(+ 微信推送方案)、**飞书**、**钉钉**、**Telegram**、**邮件**、**ntfy**，消息直达手机和邮箱
+支持**企业微信**(+ 微信推送方案)、**飞书**、**钉钉**、**Telegram**、**邮件**、**ntfy**、**Bark**、**Slack**，消息直达手机和邮箱
 
 ### **多端适配**
 - **GitHub Pages**：自动生成精美网页报告，PC/移动端适配
@@ -336,6 +337,62 @@ GitHub 一键 Fork 即可使用，无需编程基础。
 - **大版本升级**：从 v1.x 升级到 v2.y，建议删除现有 fork 后重新 fork，这样更省力且避免配置冲突
 
 
+### 2025/11/26 - mcp-v1.0.3
+
+  **MCP 模块更新:**
+  - 新增日期解析工具 resolve_date_range,解决 AI 模型计算日期不一致的问题
+  - 支持自然语言日期表达式解析(本周、最近7天、上月等)
+  - 工具总数从 13 个增加到 14 个
+
+### 2025/11/28 - v3.4.1
+
+**🔧 格式优化**
+
+1. **Bark 推送增强**
+   - Bark 现支持 Markdown 渲染
+   - 启用原生 Markdown 格式：粗体、链接、列表、代码块等
+   - 移除纯文本转换，充分利用 Bark 原生渲染能力
+
+2. **Slack 格式精准化**
+   - 使用专用 mrkdwn 格式处理分批内容
+   - 提升字节大小估算准确性（避免消息超限）
+   - 优化链接格式：`<url|text>` 和加粗语法：`*text*`
+
+3. **性能提升**
+   - 格式转换在分批过程中完成，避免二次处理
+   - 准确估算消息大小，减少发送失败率
+
+**🔧 升级说明**：
+- **GitHub Fork 用户**：更新 `main.py`，`config.yaml`
+
+
+<details>
+<summary>👉 点击展开：<strong>历史更新</strong></summary>
+
+
+### 2025/11/25 - v3.4.0
+
+**🎉 新增 Slack 推送支持**
+
+1. **团队协作推送渠道**
+   - 支持 Slack Incoming Webhooks（全球流行的团队协作工具）
+   - 消息集中管理，适合团队共享热点资讯
+   - 支持 mrkdwn 格式（粗体、链接等）
+
+2. **多种部署方式**
+   - GitHub Actions：配置 `SLACK_WEBHOOK_URL` Secret
+   - Docker：环境变量 `SLACK_WEBHOOK_URL`
+   - 本地运行：`config/config.yaml` 配置文件
+
+
+> 📖 **详细配置教程**：[快速开始 - Slack 推送](#-快速开始)
+
+- 优化 setup-windows.bat 和 setup-windows-en.bat 一键安装 MCP 的体验
+
+**🔧 升级说明**：
+- **GitHub Fork 用户**：更新 `main.py`、`config/config.yaml`、`.github/workflows/crawler.yml`
+
+
 ### 2025/11/24 - v3.3.0
 
 **🎉 新增 Bark 推送支持**
@@ -358,11 +415,6 @@ GitHub 一键 Fork 即可使用，无需编程基础。
 **🔧 升级说明**：
 - **GitHub Fork 用户**：更新 `main.py`、`config/config.yaml`、`.github/workflows/crawler.yml`
 
-
-<details>
-<summary>👉 点击展开：<strong>历史更新</strong></summary>
-
-
 ### 2025/11/23 - v3.2.0
 
 **🎯 新增高级定制功能**
@@ -380,6 +432,7 @@ GitHub 一键 Fork 即可使用，无需编程基础。
 
 **🔧 升级说明**：
 - **GitHub Fork 用户**：更新 `main.py`、`config/config.yaml`
+
 
 ### 2025/11/18 - mcp-v1.0.2
 
@@ -1191,6 +1244,104 @@ frequency_words.txt 文件增加了一个【必须词】功能，使用 + 号
 
    </details>
 
+   <details>
+   <summary>👉 点击展开：<strong>Slack 推送</strong></summary>
+   <br>
+
+   **GitHub Secret 配置（⚠️ Name 名称必须严格一致）：**
+   - **Name（名称）**：`SLACK_WEBHOOK_URL`（请复制粘贴此名称，不要手打）
+   - **Secret（值）**：你的 Slack Incoming Webhook URL
+
+   <br>
+
+   **Slack 简介：**
+
+   Slack 是团队协作工具，Incoming Webhooks 可以将消息推送到 Slack 频道。
+
+   **设置步骤：**
+
+   ### 步骤 1：创建 Slack App
+
+   1. **访问 Slack API 页面**：
+      - 打开 https://api.slack.com/apps?new_app=1
+      - 如果未登录，先登录你的 Slack 工作空间
+
+   2. **选择创建方式**：
+      - 点击 **"From scratch"**（从头开始创建）
+
+   3. **填写 App 信息**：
+      - **App Name**：填写应用名称（如 `TrendRadar` 或 `热点新闻监控`）
+      - **Workspace**：从下拉列表选择你的工作空间
+      - 点击 **"Create App"** 按钮
+
+   ### 步骤 2：启用 Incoming Webhooks
+
+   1. **导航到 Incoming Webhooks**：
+      - 在左侧菜单中找到并点击 **"Incoming Webhooks"**
+
+   2. **启用功能**：
+      - 找到 **"Activate Incoming Webhooks"** 开关
+      - 将开关从 `OFF` 切换到 `ON`
+      - 页面会自动刷新显示新的配置选项
+
+   ### 步骤 3：生成 Webhook URL
+
+   1. **添加新的 Webhook**：
+      - 滚动到页面底部
+      - 点击 **"Add New Webhook to Workspace"** 按钮
+
+   2. **选择目标频道**：
+      - 系统会弹出授权页面
+      - 从下拉列表中选择要接收消息的频道（如 `#热点新闻`）
+      - ⚠️ 如果要选择私有频道，必须先加入该频道
+
+   3. **授权应用**：
+      - 点击 **"Allow"** 按钮完成授权
+      - 系统会自动跳转回配置页面
+
+   ### 步骤 4：复制并保存 Webhook URL
+
+   1. **查看生成的 URL**：
+      - 在 "Webhook URLs for Your Workspace" 区域
+      - 会看到刚刚生成的 Webhook URL
+      - 格式如：`https://hooks.slack.com/services/T00000000/B00000000/XXXXXXXXXXXXXXXXXXXXXXXX`
+
+   2. **复制 URL**：
+      - 点击 URL 右侧的 **"Copy"** 按钮
+      - 或手动选中 URL 并复制
+
+   3. **配置到 TrendRadar**：
+      - **GitHub Actions**：将 URL 添加到 GitHub Secrets 中的 `SLACK_WEBHOOK_URL`
+      - **本地测试**：将 URL 填入 `config/config.yaml` 的 `slack_webhook_url` 字段
+      - **Docker 部署**：将 URL 添加到 `docker/.env` 文件的 `SLACK_WEBHOOK_URL` 变量
+
+   ---
+
+   **注意事项：**
+   - ✅ 支持 Markdown 格式（自动转换为 Slack mrkdwn）
+   - ✅ 支持自动分批推送（每批 4KB）
+   - ✅ 适合团队协作，消息集中管理
+   - ⚠️ Webhook URL 包含密钥，切勿公开
+
+   **消息格式预览：**
+   ```
+   *[第 1/2 批次]*
+
+   📊 *热点词汇统计*
+
+   🔥 *[1/3] AI ChatGPT* : 2 条
+
+     1. [百度热搜] 🆕 ChatGPT-5正式发布 *[1]* - 09时15分 (1次)
+
+     2. [今日头条] AI芯片概念股暴涨 *[3]* - [08时30分 ~ 10时45分] (3次)
+   ```
+
+   **相关链接：**
+   - [Slack Incoming Webhooks 官方文档](https://api.slack.com/messaging/webhooks)
+   - [Slack API 应用管理](https://api.slack.com/apps)
+
+   </details>
+
 3. **手动测试新闻推送**：
 
    > 💡 **完成第1-2步后，请立即测试！** 测试成功后再根据需要调整配置（第4步）。
@@ -1276,7 +1427,9 @@ platforms:
     name: "华尔街见闻"
   # 添加更多平台...
 ```
-如果不会看的话，就直接复制他人整理好的部分[平台配置](https://github.com/sansan0/TrendRadar/issues/95)
+如果不会看的话，可以有选择的复制他人整理好的部分[平台配置](https://github.com/sansan0/TrendRadar/issues/95)
+
+> 💡 平台不是越多越好，别贪心大量信息，你要进行筛选，否则依然只会被大量信息淹没。
 
 </details>
 
@@ -1762,7 +1915,7 @@ docker run -d --name trend-radar \
    **使用方法**：
    - 修改 `.env` 文件，取消注释并填写需要的配置
    - 或在 NAS/群晖 Docker 管理界面的"环境变量"中直接添加
-   - 重启容器后生效：`docker-compose restart`
+   - 重启容器后生效：`docker-compose up -d`
 
 
 3. **启动服务**:
@@ -1900,17 +2053,19 @@ AI 分析功能**不是**直接查询网络实时数据，而是分析你**本�
 
 ### 1. 快速部署
 
-Cherry Studio 提供 GUI 配置界面， 5 分钟快速部署， 复杂的部分是一键安装的。
+Cherry Studio 提供 GUI 配置界面，5 分钟快速部署，复杂的部分是一键安装的。
 
 **图文部署教程**：现已更新到我的[公众号](#问题答疑与交流)，回复 "mcp" 即可
 
 **详细部署教程**：[README-Cherry-Studio.md](README-Cherry-Studio.md)
 
+**部署模式说明**：
+- **STDIO 模式（推荐）**：一次配置后续无需重复配置，**图文部署教程**中仅以此模式的配置为例。
+- **HTTP 模式（备选）**：如果 STDIO 模式配置遇到问题，可使用 HTTP 模式。此模式的配置方式与 STDIO 基本一致，但复制粘贴的内容就一行，不易出错。唯一需要注意的是每次使用前都需要手动启动一下服务。详细请参考 [README-Cherry-Studio.md](README-Cherry-Studio.md) 底部的 HTTP 模式说明。
+
 ### 2. 学习与 AI 对话的姿势
 
 **详细对话教程**：[README-MCP-FAQ.md](README-MCP-FAQ.md)
-
-**提问效果**：
 
 <details>
 <summary>👉 点击展开：<strong>查看 AI 对话示例图</strong></summary>
