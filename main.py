@@ -1777,7 +1777,6 @@ def render_html_content(
             }
             
             .container {
-                max-width: 600px;
                 margin: 0 auto;
                 background: white;
                 border-radius: 12px;
@@ -1862,10 +1861,18 @@ def render_html_content(
             
             .content {
                 padding: 24px;
+                display: grid;
+                grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+                gap: 20px;
+            }
+            @media (max-width: 768px) {
+              .content {
+                grid-template-columns: 1fr;
+              }
             }
             
             .word-group {
-                margin-bottom: 40px;
+                box-shadow: 0 2px 16px rgba(0, 0, 0, 0.06);
             }
             
             .word-group:first-child {
@@ -1956,11 +1963,10 @@ def render_html_content(
             .news-content {
                 flex: 1;
                 min-width: 0;
-                padding-right: 40px;
             }
             
             .news-item.new .news-content {
-                padding-right: 50px;
+                /*padding-right: 50px;*/
             }
             
             .news-header {
@@ -2003,10 +2009,13 @@ def render_html_content(
             }
             
             .news-title {
-                font-size: 15px;
+                font-size: 12px;
                 line-height: 1.4;
                 color: #1a1a1a;
                 margin: 0;
+                text-overflow: ellipsis;
+                overflow: hidden;
+                white-space: nowrap;
             }
             
             .news-link {
@@ -2022,11 +2031,7 @@ def render_html_content(
                 color: #7c3aed;
             }
             
-            .new-section {
-                margin-top: 40px;
-                padding-top: 24px;
-                border-top: 2px solid #f0f0f0;
-            }
+            .new-section {padding: 20px;box-shadow: 0 2px 16px rgba(0, 0, 0, 0.06);}
             
             .new-section-title {
                 color: #1a1a1a;
@@ -2036,15 +2041,15 @@ def render_html_content(
             }
             
             .new-source-group {
-                margin-bottom: 24px;
+                /*margin-bottom: 24px;*/
             }
             
             .new-source-title {
                 color: #666;
                 font-size: 13px;
                 font-weight: 500;
-                margin: 0 0 12px 0;
-                padding-bottom: 6px;
+                /* margin: 0 0 12px 0;*/
+                padding-bottom: 8px;
                 border-bottom: 1px solid #f5f5f5;
             }
             
@@ -2097,10 +2102,13 @@ def render_html_content(
             }
             
             .new-item-title {
-                font-size: 14px;
+                font-size: 12px;
                 line-height: 1.4;
                 color: #1a1a1a;
                 margin: 0;
+                text-overflow: ellipsis;
+                overflow: hidden;
+                white-space: nowrap;
             }
             
             .error-section {
@@ -2348,7 +2356,7 @@ def render_html_content(
 
                 if link_url:
                     escaped_url = html_escape(link_url)
-                    html += f'<a href="{escaped_url}" target="_blank" class="news-link">{escaped_title}</a>'
+                    html += f'<a href="{escaped_url}" title="{escaped_title}" target="_blank" class="news-link">{escaped_title}</a>'
                 else:
                     html += escaped_title
 
