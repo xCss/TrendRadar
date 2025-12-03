@@ -1868,11 +1868,14 @@ def render_html_content(
             @media (max-width: 768px) {
               .content {
                 grid-template-columns: 1fr;
+                gap:10px;
               }
             }
             
             .word-group {
                 box-shadow: 0 2px 16px rgba(0, 0, 0, 0.06);
+                padding:16px;
+                overflow:hidden;
             }
             
             .word-group:first-child {
@@ -1915,7 +1918,6 @@ def render_html_content(
             }
             
             .news-item {
-                margin-bottom: 20px;
                 padding: 16px 0;
                 border-bottom: 1px solid #f5f5f5;
                 position: relative;
