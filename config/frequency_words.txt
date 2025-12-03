@@ -31,8 +31,6 @@ DJI
 刘慈欣
 郭帆
 
-申奥
-
 京东
 刘强东
 
@@ -42,6 +40,7 @@ bytedance
 
 特斯拉
 马斯克
+SPACEX
 
 微软
 Microsoft
@@ -64,10 +63,11 @@ sora
 claude
 Anthropic
 
-iphone
-ipad
-mac
-ios
+iPhone
+iPad
+Mac
+iOS
+Apple
 
 ai
 !gai
